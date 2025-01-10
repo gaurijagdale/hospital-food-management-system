@@ -8,19 +8,22 @@ const DietChartDetails = () => {
   const [patientDetails, setPatientDetails] = useState(null); // To store patient data
   const navigate = useNavigate(); // For navigation
 
+  const VITE_BACKEND_URL=import.meta.env.VITE_BACKEND_URL
+
+
   useEffect(() => {
     const fetchDietChartDetails = async () => {
       try {
         // Fetch diet chart details
         const dietChartResponse = await axios.get(
-          `http://localhost:3000/api/dietcharts/${id}`
+          `${VITE_BACKEND_URL}/api/dietcharts/${id}`
         );
         const dietChartData = dietChartResponse.data;
         setDietChart(dietChartData);
 
         // Fetch patient details based on patient_id from diet chart
         const patientResponse = await axios.get(
-          `http://localhost:3000/api/patients/${dietChartData.patient_id}`
+          `${VITE_BACKEND_URL}/api/patients/${dietChartData.patient_id}`
         );
         setPatientDetails(patientResponse.data);
       } catch (error) {
@@ -89,7 +92,7 @@ const DietChartDetails = () => {
               )
             ) {
               await axios.delete(
-                `http://localhost:3000/api/dietcharts/${id}`
+                `${VITE_BACKEND_URL}/api/dietcharts/${id}`
               );
               alert("Diet chart deleted successfully");
               navigate("/admin/dietcharts"); // Redirect to the diet chart list page

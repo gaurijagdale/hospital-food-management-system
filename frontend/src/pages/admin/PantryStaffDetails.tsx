@@ -7,12 +7,15 @@ const PantryStaffDetails = () => {
   const [pantryStaff, setPantryStaff] = useState(null);
   const navigate = useNavigate();
 
+  const VITE_BACKEND_URL=import.meta.env.VITE_BACKEND_URL
+
+
   useEffect(() => {
     const fetchPantryStaffDetails = async () => {
       try {
         // Fetch pantry staff details
         const response = await axios.get(
-          `http://localhost:3000/api/pantrystaff/${id}`
+          `${VITE_BACKEND_URL}/api/pantrystaff/${id}`
         );
         setPantryStaff(response.data);
       } catch (error) {
@@ -69,7 +72,7 @@ const PantryStaffDetails = () => {
               )
             ) {
               await axios.delete(
-                `http://localhost:3000/api/pantrystaff/${id}`
+                `${VITE_BACKEND_URL}/api/pantrystaff/${id}`
               );
               alert("Pantry staff deleted successfully");
               navigate("/admin/pantrystaff"); // Redirect to the pantry staff list page

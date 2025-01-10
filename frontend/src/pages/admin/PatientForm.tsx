@@ -33,6 +33,9 @@ interface FormData {
 }
 
 const AddPatientForm = () => {
+
+  const VITE_BACKEND_URL=import.meta.env.VITE_BACKEND_URL
+
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -65,7 +68,7 @@ const AddPatientForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/api/patients/add", {
+      const response = await fetch(`${VITE_BACKEND_URL}/api/patients/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

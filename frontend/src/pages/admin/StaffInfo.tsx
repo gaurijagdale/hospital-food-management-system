@@ -7,11 +7,14 @@ const StaffInfo = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const VITE_BACKEND_URL=import.meta.env.VITE_BACKEND_URL
+
+
   useEffect(() => {
     const fetchPantryStaff = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/pantrystaff/"
+          `${VITE_BACKEND_URL}/api/pantrystaff/`
         );
         setPantryStaff(response.data); // Assuming the response contains the pantry staff data
         setLoading(false);

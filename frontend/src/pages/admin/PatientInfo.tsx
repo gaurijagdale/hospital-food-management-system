@@ -18,11 +18,14 @@ const PatientInfo = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const VITE_BACKEND_URL=import.meta.env.VITE_BACKEND_URL
+
+
   // Fetch patient data
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/patients/");
+        const response = await axios.get(`${VITE_BACKEND_URL}/api/patients/`);
         setPatients(response.data); // Assuming the response contains the patients data
         setLoading(false);
         console.log(response.data);

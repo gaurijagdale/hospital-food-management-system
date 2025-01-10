@@ -7,12 +7,15 @@ const PatientDetails = () => {
   const { id } = useParams(); // Get patient ID from the route
   const [patient, setPatient] = useState(null);
 
+  const VITE_BACKEND_URL=import.meta.env.VITE_BACKEND_URL
+
+
   useEffect(() => {
     const fetchPatientDetails = async () => {
       try {
         console.log(id);
         const response = await axios.get(
-          `http://localhost:3000/api/patients/${id}`
+          `${VITE_BACKEND_URL}/api/patients/${id}`
         );
         setPatient(response.data);
       } catch (error) {
@@ -70,7 +73,7 @@ const PatientDetails = () => {
         onClick={async () => {
             try {
                 if (window.confirm("Are you sure you want to delete this patient?")) {
-                    await axios.delete(`http://localhost:3000/api/patients/${id}`);
+                    await axios.delete(`${VITE_BACKEND_URL}/api/patients/${id}`);
                     alert("Patient deleted successfully");
                     window.location.href = "/admin/patients";
                 }

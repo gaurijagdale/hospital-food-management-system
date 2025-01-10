@@ -26,7 +26,7 @@ const DietChartsInfo = () => {
     const fetchDietCharts = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/dietcharts/"
+          `${VITE_BACKEND_URL}/api/dietcharts/`
         ); // Update the endpoint URL
         setDietCharts(response.data); // Assuming the response contains the diet charts data
         setLoading(false);
@@ -39,7 +39,7 @@ const DietChartsInfo = () => {
 
     const fetchPatients = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/patients/");
+        const response = await axios.get(`${VITE_BACKEND_URL}/api/patients/`);
         setPatients(response.data); // Assuming the response contains the patients data
         setLoading(false);
         console.log(response.data);

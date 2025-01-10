@@ -13,7 +13,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
+
+
 const MealTrack = () => {
+
+const VITE_BACKEND_URL=import.meta.env.VITE_BACKEND_URL
+
   const [patients, setPatients] = useState([]);
   const [deliveryPersonnel, setDeliveryPersonnel] = useState([]);
   const [deliveries, setDeliveries] = useState([]);
@@ -24,9 +29,9 @@ const MealTrack = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const mealTrackResponse = await axios.get("http://localhost:3000/api/mealdelivery/");
-        const patientResponse = await axios.get("http://localhost:3000/api/patients/");
-        const deliveryPersonnelResponse = await axios.get("http://localhost:3000/api/deliverypersonnel/");
+        const mealTrackResponse = await axios.get(`${VITE_BACKEND_URL}/api/mealdelivery/`);
+        const patientResponse = await axios.get(`${VITE_BACKEND_URL}/api/patients/`);
+        const deliveryPersonnelResponse = await axios.get(`${VITE_BACKEND_URL}/api/deliverypersonnel/`);
 
         setDeliveries(mealTrackResponse.data);
         setPatients(patientResponse.data);
