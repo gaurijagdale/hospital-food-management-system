@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import AdminNav from './components/AdminNav';
+import Navbar from './components/Navbar';
+import Dashboard from './pages/admin/Dashboard';
+import DietChart from './pages/admin/DietChart';
+import StaffInfo from './pages/admin/StaffInfo';
+import PatientInfo from './pages/admin/PatientInfo';
+import MealTrack from './pages/admin/MealTrack';
+import Footer from './components/Footer';
+import PatientForm from './pages/admin/PatientForm';
+import PatientDetails from './pages/admin/PatientDetails';
+import DietChartDetails from './pages/admin/DietChartDetails';
+import PantryStaffDetails from './pages/admin/PantryStaffDetails';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+
+  const location = useLocation(); // Get the current route
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        {location.pathname !== '/login' && <Navbar />}
+      <div className='flex'>
+      <AdminNav/>
+        <Routes>
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/dietcharts" element={<DietChart />} />
+          <Route path="/admin/pantrystaff" element={<StaffInfo />} />
+          <Route path="/admin/patients" element={<PatientInfo />} />
+          <Route path="/admin/mealtrack" element={<MealTrack />} />
+          <Route path="/admin/patients/form" element={<PatientForm />} />
+          <Route path="/patient/:id" element={<PatientDetails />} />
+          <Route path="/dietChart/:id" element={<DietChartDetails />} />
+          <Route path="/pantryStaff/:id" element={<PantryStaffDetails />} />
+
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {location.pathname !== '/login' && <Footer />}
     </>
   )
 }
 
-export default App
+function AppWrapper() {
+  return (
+    <Router>
+      <App />
+    </Router>
+  );
+}
+
+export default AppWrapper
