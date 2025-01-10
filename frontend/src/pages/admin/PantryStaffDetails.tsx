@@ -7,8 +7,7 @@ const PantryStaffDetails = () => {
   const [pantryStaff, setPantryStaff] = useState(null);
   const navigate = useNavigate();
 
-  const VITE_BACKEND_URL=import.meta.env.VITE_BACKEND_URL
-
+  const VITE_BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     const fetchPantryStaffDetails = async () => {
@@ -31,35 +30,37 @@ const PantryStaffDetails = () => {
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8">
+    <div className="w-full px-16 py-7 bg-slate-100">
       <h1 className="text-2xl font-bold mb-6">Pantry Staff Details</h1>
-      <div className="border p-4 rounded-lg shadow-md">
-        <img
-          src={pantryStaff.img_url}
-          alt={`${pantryStaff.name}'s profile`}
-          className="w-32 h-32 rounded-full mb-4"
-        />
-        <p>
-          <strong>Name:</strong> {pantryStaff.name}
-        </p>
-        <p>
-          <strong>Phone:</strong> {pantryStaff.contact_info.phone}
-        </p>
-        <p>
-          <strong>Email:</strong> {pantryStaff.contact_info.email}
-        </p>
-        <p>
-          <strong>Location:</strong> {pantryStaff.location}
-        </p>
-        <p>
-          <strong>Role:</strong> {pantryStaff.role}
-        </p>
-        <p>
-          <strong>Assigned Tasks:</strong>{" "}
-          {pantryStaff.assigned_tasks.length > 0
-            ? pantryStaff.assigned_tasks.join(", ")
-            : "No tasks assigned"}
-        </p>
+      <div className="w-[800px] flex rounded-lg shadow-md items-center p-8 bg-white">
+        <div className=" p-4 ">
+          <img
+            src={pantryStaff.img_url}
+            alt={`${pantryStaff.name}'s profile`}
+            className="w-32 h-32 rounded-full mb-4"
+          />
+          <p>
+            <strong>Name:</strong> {pantryStaff.name}
+          </p>
+          <p>
+            <strong>Phone:</strong> {pantryStaff.contact_info.phone}
+          </p>
+          <p>
+            <strong>Email:</strong> {pantryStaff.contact_info.email}
+          </p>
+          <p>
+            <strong>Location:</strong> {pantryStaff.location}
+          </p>
+          <p>
+            <strong>Role:</strong> {pantryStaff.role}
+          </p>
+          <p>
+            <strong>Assigned Tasks:</strong>{" "}
+            {pantryStaff.assigned_tasks.length > 0
+              ? pantryStaff.assigned_tasks.join(", ")
+              : "No tasks assigned"}
+          </p>
+        </div>
       </div>
 
       <button
@@ -71,9 +72,7 @@ const PantryStaffDetails = () => {
                 "Are you sure you want to delete this pantry staff member?"
               )
             ) {
-              await axios.delete(
-                `${VITE_BACKEND_URL}/api/pantrystaff/${id}`
-              );
+              await axios.delete(`${VITE_BACKEND_URL}/api/pantrystaff/${id}`);
               alert("Pantry staff deleted successfully");
               navigate("/admin/pantrystaff"); // Redirect to the pantry staff list page
             }

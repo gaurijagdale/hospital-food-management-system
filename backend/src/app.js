@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3000;
 
 // CORS configuration
 const corsOptions = {
-  origin: "http://localhost:5173", // Allow only this origin
+  origin: ["https://hospital-frontend-n7g0.onrender.com", "http://localhost:5173"], // Allow only these origins
   methods: "GET,POST,PUT,DELETE,OPTIONS", // Allowed HTTP methods
   credentials: true, // Include credentials if needed
 };

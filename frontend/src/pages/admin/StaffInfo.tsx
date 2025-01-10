@@ -32,8 +32,8 @@ const StaffInfo = () => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className="w-full px-16 py-7">
-      <div>Search</div>
+    <div className="w-full px-16 py-7 bg-slate-100">
+      {/* <div>Search</div> */}
       <div
         id="profiles"
         className="w-full grid grid-cols-1 lg:grid-cols-2 lg:gap-8 gap-6 mt-5"
