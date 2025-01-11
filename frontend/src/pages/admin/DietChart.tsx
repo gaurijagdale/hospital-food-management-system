@@ -58,7 +58,7 @@ const DietChartsInfo = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="w-full px-16 py-7 bg-slate-100">
+    <div className="w-full px-16 py-7 h-screen bg-slate-100">
       <div className="flex justify-between">
         <div className="flex space-x-4">
           <div>

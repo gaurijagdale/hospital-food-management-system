@@ -49,7 +49,7 @@ const PatientInfo = () => {
   };
 
   return (
-    <div className="w-full px-16 py-7 bg-slate-100">
+    <div className="w-full h-screen px-16 py-7 bg-slate-100">
       <div className="flex justify-between">
         <div className="flex space-x-4">
           <div>

@@ -6,7 +6,7 @@ const AdminNav = () => {
     <div className='w-64 h-screen flex flex-col items-center space-y-7 p-8 text-black border-r shadow-md fixed '>
         {/* <div>Heading</div> */}
         <div className='flex flex-col space-y-4 items-center'>
-            <Link to="/admin/dashboard">Dashboard</Link>
+            <Link to="/">Dashboard</Link>
             <Link to="/admin/patients">Patients</Link>
             <Link to="/admin/dietcharts">Dietcharts</Link>
             <Link to="/admin/pantrystaff">Pantry Staff</Link>
